@@ -20,8 +20,8 @@ module Document = {
     ~keywords: option(string)=?,
     ~creator: option(string)=?,
     ~producer: option(string)=?,
-    ~onRender: option(unit => unit)=?
-    ~children: React.element,
+    ~onRender: option(unit => unit)=?,
+    ~children: React.element
     ) => React.element = "Document";
 };
 
