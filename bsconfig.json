@@ -1,0 +1,26 @@
+{
+  "name": "reason-react-pdf",
+  "reason": {
+    "react-jsx": 3
+  },
+  "bs-dependencies": [
+    "reason-react"
+  ],
+  "bs-dev-dependencies": [],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "warnings": {
+    "number": "-44",
+    "error": "+27"
+  },
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "refmt": 3
+}
