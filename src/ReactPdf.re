@@ -1,3 +1,7 @@
+type blobProviderparams = {
+    loading: bool
+};
+
 module ReactPDFRe = {
   [@bs.module "@react-pdf/renderer"] [@bs.scope "default"]
   external render: (React.element, string) => Js.Promise.t(unit) =
@@ -124,4 +128,23 @@ module Font = {
 
   [@bs.module "@react-pdf/renderer"] [@bs.scope "Font"]
   external register: Js.t('a) => unit = "register";
+};
+
+module PDFDownloadLink = {
+  [@bs.module "@react-pdf/renderer"][@react.component]
+  external make: (
+      ~document: React.element,
+      ~fileName: option(string)=?,
+      ~style: option(StyleSheet.t('a))=?,
+      ~className: option(string)=?,
+      ~children: blobProviderparams => React.element
+  ) => React.element = "PDFDownloadLink";
+};
+
+module BlobProvider = {
+  [@bs.module "@react-pdf/renderer"][@react.component]
+  external make: (
+    ~document: React.element,
+    ~children: blobProviderparams => React.element
+  ) => React.element = "BlobProvider";
 };
