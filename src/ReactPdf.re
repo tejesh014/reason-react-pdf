@@ -1,8 +1,6 @@
 type arrayBuffer;
 
-type pdfBlob = {
-  arrayBuffer: unit => Js.Promise.t(arrayBuffer)
-};
+type pdfBlob;
 
 type pdfData = {
   toBlob: unit => Js.Promise.t(pdfBlob)
@@ -12,6 +10,10 @@ type blobProviderparams = {
     loading: bool
 };
 
+[@bs.send] external blobArrayBuffer: (pdfBlob, unit) => Js.Promise.t(arrayBuffer) = "arrayBuffer";
+
+let getBlobArrayBuffer = (blob: pdfBlob) : Js.Promise.t(arrayBuffer) => blobArrayBuffer(blob, ());
+
 module ReactPDFRe = {
   [@bs.module "@react-pdf/renderer"] [@bs.scope "default"]
   external render: (React.element, string) => Js.Promise.t(unit) =
@@ -20,8 +22,9 @@ module ReactPDFRe = {
   [@bs.module "@react-pdf/renderer"]
   external getPdfData: React.element => pdfData = "pdf";
 
+
   let getBlob = (document: React.element) : Js.Promise.t(pdfBlob) => getPdfData(document).toBlob();
-  
+
 };
 
 module StyleSheet = {
