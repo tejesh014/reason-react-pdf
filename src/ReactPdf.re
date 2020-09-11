@@ -49,10 +49,22 @@ module Document = {
 };
 
 module Page = {
+  module Size: {
+    type t;
+    let string: string => t;
+    let int: int => t;
+  } = {
+    [@unboxed]
+    type t =
+      | Size('a): t;
+    let string = (v: string) => Size(v);
+    let int = (v: int) => Size(v);
+  };
+
   [@bs.module "@react-pdf/renderer"][@react.component]
   external make:
       (
-        ~size: option(string)=?,
+        ~size: option(Size.t)=?,
         ~orientation: option(string)=?,
         ~wrap: option(bool)=?,
         ~style: option(StyleSheet.t('a))=?,
@@ -108,6 +120,17 @@ module Image = {
         ~allowDangerousPaths : option(bool)=?
   ) => React.element = "Image";
 };
+
+module Link = {
+  [@bs.module "@react-pdf/renderer"][@react.component]
+  external make: (
+    ~src: string,
+    ~wrap: option(bool)=?,
+    ~debug: option(bool)=?,
+    ~children: option(React.element)=?,
+  ) => React.element = "Link";
+};
+
 
 module PDFViewer = {
 
