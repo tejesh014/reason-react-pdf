@@ -111,7 +111,7 @@ module Text = {
 module Image = {
   [@bs.module "@react-pdf/renderer"][@react.component]
   external make: (
-        ~src: option(string)=?,
+        ~src: string,
         ~style: option(StyleSheet.t('a))=?,
         ~debug: option(bool)=?,
         ~fixed: option(bool)=?,
