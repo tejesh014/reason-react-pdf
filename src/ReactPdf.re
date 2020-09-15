@@ -127,6 +127,7 @@ module Link = {
     ~src: string,
     ~wrap: option(bool)=?,
     ~debug: option(bool)=?,
+    ~style: option(StyleSheet.t('a))=?,
     ~children: option(React.element)=?,
   ) => React.element = "Link";
 };
