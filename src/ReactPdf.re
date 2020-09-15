@@ -7,7 +7,8 @@ type pdfData = {
 };
 
 type blobProviderparams = {
-    loading: bool
+    loading: bool,
+    url: option(string)
 };
 
 [@bs.send] external blobArrayBuffer: (pdfBlob, unit) => Js.Promise.t(arrayBuffer) = "arrayBuffer";
