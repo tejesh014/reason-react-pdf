@@ -335,7 +335,7 @@ ramda@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
 
-react-dom@>=16.8.1, react-dom@^16.8.6:
+react-dom@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
   dependencies:
@@ -357,7 +357,7 @@ react-reconciler@^0.24.0:
     prop-types "^15.6.2"
     scheduler "^0.18.0"
 
-react@>=16.8.1, react@^16.8.6:
+react@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   dependencies:
@@ -365,12 +365,9 @@ react@>=16.8.1, react@^16.8.6:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
-reason-react@^0.7.0:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.7.1.tgz#e6acea88542cd44398cd980093b8a2ab2722744e"
-  dependencies:
-    react ">=16.8.1"
-    react-dom ">=16.8.1"
+reason-react@^0.9.0:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.9.1.tgz#30a887158200b659aa03e2d75ff4cc54dc462bb0"
 
 regenerator-runtime@^0.11.0:
   version "0.11.1"
