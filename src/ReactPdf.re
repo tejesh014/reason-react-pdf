@@ -172,6 +172,14 @@ module Font = {
 
   [@bs.module "@react-pdf/renderer"] [@bs.scope "Font"]
   external register: Js.t('a) => unit = "register";
+
+  type emojiSource = {
+    url: string,
+    format: string,
+  };
+
+  [@bs.module "@react-pdf/renderer"] [@bs.scope "Font"]
+  external registerEmojiSource: emojiSource => unit = "registerEmojiSource";
 };
 
 module PDFDownloadLink = {
