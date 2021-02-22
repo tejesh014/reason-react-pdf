@@ -51,33 +51,35 @@ module Document = {
 
 module Page = {
   module Size: {
-    type t;
-    let string: string => t;
-    let int: int => t;
-  } = {
-    [@unboxed]
-    type t =
-      | Size('a): t;
-    let string = (v: string) => Size(v);
-    let int = (v: int) => Size(v);
-  };
+      type t;
+      let string: string => t;
+      let int: int => t;
+      let array: array(int) => t;
+    } = {
+      [@unboxed]
+      type t =
+        | Size('a): t;
+      let string = (v: string) => Size(v);
+      let int = (v: int) => Size(v);
+      let array = (v: array(int)) => Size(v);
+    };
 
   [@bs.module "@react-pdf/renderer"][@react.component]
   external make:
-      (
-        ~size: option(Size.t)=?,
-        ~orientation: option(string)=?,
-        ~wrap: option(bool)=?,
-        ~style: option(StyleSheet.t('a))=?,
-        ~debug: option(bool)=?,
-        ~ruler: option(bool)=?,
-        ~rulerSteps: option(int)=?,
-        ~verticalRuler: option(bool)=?,
-        ~verticalRulerSteps: option(int)=?,
-        ~horizontalRuler: option(bool)=?,
-        ~horizontalRulerSteps: option(int)=?,
-        ~children: React.element,
-      ) => React.element = "Page"
+    (
+      ~size: option(Size.t)=?,
+      ~orientation: option(string)=?,
+      ~wrap: option(bool)=?,
+      ~style: option(StyleSheet.t('a))=?,
+      ~debug: option(bool)=?,
+      ~ruler: option(bool)=?,
+      ~rulerSteps: option(int)=?,
+      ~verticalRuler: option(bool)=?,
+      ~verticalRulerSteps: option(int)=?,
+      ~horizontalRuler: option(bool)=?,
+      ~horizontalRulerSteps: option(int)=?,
+      ~children: React.element,
+    ) => React.element = "Page"
 };
 
 module View = {
@@ -86,6 +88,7 @@ module View = {
   [@bs.module "@react-pdf/renderer"][@react.component]
   external make: (
     ~wrap: option(bool)=?,
+    ~break: option(bool)=?,
     ~style: option(StyleSheet.t('a))=?,
     ~debug: option(bool)=?,
     ~render: option(renderPropsType => ReasonReact.reactElement)=?,
@@ -181,6 +184,19 @@ module Font = {
   [@bs.module "@react-pdf/renderer"] [@bs.scope "Font"]
   external registerEmojiSource: emojiSource => unit = "registerEmojiSource";
 };
+
+
+module Note = {
+  [@react.component][@bs.module "@react-pdf/renderer"]
+  external make:
+  (
+    ~style: option(StyleSheet.t('a))=?,
+    ~fixed: option(bool)=?,
+    ~children: React.element
+  ) =>
+   React.element = "Note";
+};
+
 
 module PDFDownloadLink = {
   [@bs.module "@react-pdf/renderer"][@react.component]
